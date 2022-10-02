@@ -60,12 +60,8 @@ public class DelivB {
 		Node start = null;
 		for (Node n : graph.getNodeList()) {
 			if(n.getValue().equalsIgnoreCase("s")){
-			start = n;
+				start = n;
 			}
-			/*
-			 * for (Edge e : n.getOutgoingEdges()) {
-			 * if(e.getHead().getValue().equalsIgnoreCase("s")) { start = e.getHead(); } }
-			 */
 			n.setColor(WHITE);
 			time = 0;
 		}
@@ -111,7 +107,7 @@ public class DelivB {
 		for(Edge e : graph.getEdgeList()) {
 			if(e.getHead().getDiscovery()<e.getHead().getFinish() && 
 					e.getHead().getFinish() < e.getTail().getDiscovery() &&
-						e.getTail().getDiscovery()< e.getTail().getFinish()) 
+					e.getTail().getDiscovery()< e.getTail().getFinish()) 
 			{
 				e.setType("Cross");
 			}
@@ -137,7 +133,7 @@ public class DelivB {
 		System.out.println("\nEdge \tType");
 		for (Edge e : graph.getEdgeList()) {
 			System.out.println(e.getTail().getAbbrev() + "->" +
-						e.getHead().getAbbrev() + "\t" + e.getType());
+					e.getHead().getAbbrev() + "\t" + e.getType());
 		}
 	}
 
@@ -161,11 +157,15 @@ public class DelivB {
 			return 0;
 		}
 	}
-	
+	/**
+	 * 
+	 * @author Abdul
+	 *
+	 */
 	class CompareToDegree implements Comparator<Node> {
-			@Override
-			public int compare(Node o1, Node o2) {
-			   return o1.getAbbrev().compareToIgnoreCase(o2.getAbbrev());
-			}
+		@Override
+		public int compare(Node o1, Node o2) {
+			return o1.getAbbrev().compareToIgnoreCase(o2.getAbbrev());
 		}
+	}
 }
